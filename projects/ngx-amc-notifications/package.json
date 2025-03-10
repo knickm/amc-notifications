@@ -1,0 +1,24 @@
+{
+  "name": "ngx-amc-notifications",
+  "version": "0.0.2",
+  "description": "Multiple notifications based on MatSnackBar",
+  "author": "Kuritsyn Nikolay",
+  "keywords": [
+    "angular",
+    "angular 19",
+    "angular-material",
+    "angular-material snackbar",
+    "MatSnackBar",
+    "multiple notifications",
+    "ngx-amc-notifications"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^19.2.0",
+    "@angular/core": "^19.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

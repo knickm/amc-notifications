@@ -1,0 +1,44 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: max(400px, 25vw);
+    gap: 0.4rem;
+    border-color: transparent;
+
+    .notification {
+        display: grid;
+        grid-template-columns: 20px auto 20px;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        border-radius: 0.2rem;
+        width: 100%;
+        color: #fff;
+        background-color: #777;
+        box-sizing: border-box;
+
+        box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+    }
+
+    .cursor-pointer {
+        cursor: pointer;
+    }
+
+    .message {
+        background-color: #777;
+    }
+
+    .success {
+        background-color: green;
+    }
+
+    .warning {
+        background-color: orange;
+    }
+
+    .error {
+        background-color: crimson;
+    }
+}

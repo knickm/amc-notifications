@@ -1,0 +1,19 @@
+.transparent-block {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    background-color: transparent !important;
+
+    .mdc-snackbar__surface.mat-mdc-snackbar-surface,
+    .mat-mdc-snackbar-surfaceu,
+    .mdc-snackbar__surface {
+        padding: 0;
+        background-color: transparent !important;
+        box-shadow: none !important;
+
+        .mdc-snackbar__label {
+            padding: 0;
+        }
+    }
+}
+@import 'material-icons/iconfont/material-icons.css';

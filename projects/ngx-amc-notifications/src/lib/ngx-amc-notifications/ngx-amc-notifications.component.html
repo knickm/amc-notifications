@@ -1,0 +1,16 @@
+@for (item of messages(); track $index) {
+@if(item.component) {
+<ng-container *ngComponentOutlet="item.component;inputs:{data:item.data};" />
+}@else{
+<div [ngClass]="item.data.type" class="notification">
+    @if (item.data.icon) {
+    <mat-icon>{{item.data.icon}}</mat-icon>
+    }
+    @else {
+    <mat-icon>notifications</mat-icon>
+    }
+    <span>{{item.data.text}}</span>
+    <mat-icon class="cursor-pointer" (click)="close(item.id)">close</mat-icon>
+</div>
+}
+}
