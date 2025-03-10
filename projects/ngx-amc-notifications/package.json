@@ -3,6 +3,14 @@
   "version": "0.0.2",
   "description": "Multiple notifications based on MatSnackBar",
   "author": "Kuritsyn Nikolay",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/knickm/amc-notifications.git"
+  },
+  "bugs": {
+    "url": "https://github.com/knickm/amc-notifications/issues"
+  },
+  "homepage": "https://github.com/knickm/amc-notifications",
   "keywords": [
     "angular",
     "angular 19",
