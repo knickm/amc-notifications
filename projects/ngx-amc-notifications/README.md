@@ -1,63 +1,65 @@
-# NgxAmcNotifications
+# Angular Material Notifications for @angular/material 19.2.x
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+Additional component for Angular Material
 
-## Code scaffolding
+## Description
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Notifications based on Material SnackBar and can show multiple notification.
 
-```bash
-ng generate component component-name
+## Getting started
+
+```
+npm install --save ngx-amc-notifications
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Setup
 
-```bash
-ng generate --help
+Add the notifications provider to your app configuration.
+
+```typescript
+import { provideNgxNotifications } from 'ngx-amc-notifications';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+   ...,
+    provideNgxNotifications(),
+   ...,
+  ]
+};
 ```
 
-## Building
+On your component, you can use the notifications as follows:
 
-To build the library, run:
+```typescript
+import { Component, inject, OnInit } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { createSuccessNotification, createWarningNotification, NgxNotificationsService } from 'ngx-amc-notifications';
 
-```bash
-ng build ngx-amc-notifications
+@Component({
+  selector: 'app-root',
+  imports: [
+    MatIconModule,
+  ],
+  template: '',
+})
+export class AppComponent implements OnInit {
+  notificationsService = inject<NgxNotificationsService>(NgxNotificationsService);
+
+  ngOnInit(): void {
+    this.notificationsService.add(createSuccessNotification('Data store sucsesfuly 1!'), { duration: 10000 })
+    this.notificationsService.add(createSuccessNotification('Data store sucsesfuly 2!'), { duration: 6000 })
+    this.notificationsService.add(createWarningNotification('Data store warning!'), { duration: 3000 })
+    this.notificationsService.add('Message!')
+    this.notificationsService.add(
+      {
+        text: 'Message!', type: 'error',
+        icon: 'error'
+      },
+    )
+  }
+}
 ```
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
+## License
 
-### Publishing the Library
-
-Once the project is built, you can publish your library by following these steps:
-
-1. Navigate to the `dist` directory:
-   ```bash
-   cd dist/ngx-amc-notifications
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+MIT
