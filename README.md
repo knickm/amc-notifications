@@ -1,59 +1,65 @@
-# @amcNotifications
+# Angular Material Notifications for @angular/material 19.2.x
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
+Additional component for Angular Material
 
-## Development server
+## Description
 
-To start a local development server, run:
+Notifications based on Material SnackBar and can show multiple notification.
 
-```bash
-ng serve
+## Getting started
+
+```
+npm install --save ngx-amc-notifications
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Setup
 
-## Code scaffolding
+Add the notifications provider to your app configuration.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+```typescript
+import { provideNgxNotifications } from 'ngx-amc-notifications';
 
-```bash
-ng generate component component-name
+export const appConfig: ApplicationConfig = {
+  providers: [
+   ...,
+    provideNgxNotifications(),
+   ...,
+  ]
+};
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+On your component, you can use the notifications as follows:
 
-```bash
-ng generate --help
+```typescript
+import { Component, inject, OnInit } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { createSuccessNotification, createWarningNotification, NgxNotificationsService } from 'ngx-amc-notifications';
+
+@Component({
+  selector: 'app-root',
+  imports: [
+    MatIconModule,
+  ],
+  template: '',
+})
+export class AppComponent implements OnInit {
+  notificationsService = inject<NgxNotificationsService>(NgxNotificationsService);
+
+  ngOnInit(): void {
+    this.notificationsService.add(createSuccessNotification('Data store sucsesfuly 1!'), { duration: 10000 })
+    this.notificationsService.add(createSuccessNotification('Data store sucsesfuly 2!'), { duration: 6000 })
+    this.notificationsService.add(createWarningNotification('Data store warning!'), { duration: 3000 })
+    this.notificationsService.add('Message!')
+    this.notificationsService.add(
+      {
+        text: 'Message!', type: 'error',
+        icon: 'error'
+      },
+    )
+  }
+}
 ```
 
-## Building
+## License
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+MIT
